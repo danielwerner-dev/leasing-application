@@ -1,0 +1,73 @@
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: Leasing Application Service
+  description: "API for managing leasing applications"
+components:
+  schemas:
+    Customer:
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        email_status:
+          type: string
+        phone:
+          type: string
+        phone_status:
+          type: string
+        communication_preferences:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        deleted_at:
+          type: string
+  securitySchemes:
+    token:
+      type: http
+      scheme: bearer
+      bearerFormat: Cognito ID Token
+security:
+  - token: []
+paths:
+  /leasing/{customer_id}:
+    get:
+      summary: Gets a customer by id
+      tags:
+        - Customer
+      parameters:
+        - name: customer_id
+          in: path
+          required: true
+          description: "The customer id"
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+        "400":
+          description: "Bad request"
+        "401":
+          description: "Unauthorized"
+        "403":
+          description: "Forbidden"
+        "404":
+          description: "Customer not found"
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/invitation-homes/customer-service/1.0.0
+  - description: Development Environment
+    url: https://api-dev.invitationhomes.com/customer/v1
+  - description: QA Environment
+    url: https://api-qa.invitationhomes.com/customer/v1

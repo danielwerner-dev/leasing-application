@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "types": ["node", "jest"],
+    "allowJs": true,
+    "checkJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ES2020",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "outDir": "./dist",
+    "baseUrl": "..",
+    "paths": {
+      "$lib": ["./src/lib"],
+      "$lib/*": ["./src/lib/*"],
+      "$functions/*": ["./src/functions/*"],
+      "$fixtures": ["./tests/fixtures"],
+      "$fixtures/*": ["./tests/fixtures/*"]
+    }
+  },
+  "include": [".", ".eslintrc.cjs", "jest.env.js", "jest.setup.js"],
+  "exclude": ["dist", "node_modules"]
+}
